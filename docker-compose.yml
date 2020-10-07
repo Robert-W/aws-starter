@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+
+  api:
+    image: starter/api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    environment:
+      PORT: 4000
+    ports:
+      - 4000:4000
+    volumes:
+      - ./api/endpoint:/srv/endpoint
+    networks:
+      - starter
+
+  app:
+    image: starter/app
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    environment:
+      PORT: 3000
+    ports:
+      - 3000:3000
+    volumes:
+      - ./app/src:/srv/src
+      - ./app/package.json:/srv/package.json
+      - ./app/webpack.dev.config.js:/srv/webpack.dev.config.js
+      - ./app/webpack.prod.config.js:/srv/webpack.prod.config.js
+    networks:
+      - starter
+
+  devops:
+    image: starter/devops
+    build:
+      context: ./devops
+      dockerfile: Dockerfile
+    volumes:
+      - ./api:/root/api
+      - ./app:/root/app
+      - ./devops/:/root/devops
+    networks:
+      - starter
+
+networks:
+  starter:
+    name: starter
+    driver: bridge

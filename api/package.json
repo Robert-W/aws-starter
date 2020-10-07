@@ -1,0 +1,16 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Development server for the AWS Gateway API",
+  "main": "null",
+  "author": "Robert-W",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node development.server.js"
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "glob": "^7.1.6"
+  }
+}
