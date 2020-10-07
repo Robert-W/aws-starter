@@ -20,7 +20,7 @@ module.exports.dev = {
  * @function handler
  * @description Lambda function that should handle the above methods
  */
-module.exports.handler = function endpointHandler(event, context) {
+module.exports.handler = async function endpointHandler(event, context) {
 	return new Promise((resolve, reject) => {
 		return resolve({
 			status: 200,

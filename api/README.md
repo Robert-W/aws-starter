@@ -22,7 +22,7 @@ An object for enabling this function on the development server. It should have a
 This is your lambda function, use the following boilerplate:
 
 ```javascript
-module.exports.handler = function endpointHandler(event, context) {
+module.exports.handler = async function endpointHandler(event, context) {
 	return new Promise((resolve, reject) => {
 		return resolve({
 			status: 200,
